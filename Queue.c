@@ -1,4 +1,5 @@
 #include "Queue.h"
+#include "Contactos.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +14,7 @@ int isEmpty(queue *q){
     return (q -> rear == NULL);
 }
 
-void enqueue(queue *q, int value){
+void enqueue(queue *q, contacto value){
     node *temp;
     temp = malloc(sizeof(node));
     temp -> data = value;
@@ -28,7 +29,7 @@ void enqueue(queue *q, int value){
     q -> count++;
 }
 
-int dequeue(queue *q){
+void dequeue(queue *q){
     int n = q -> front -> data;
     node *temp;
 
@@ -36,18 +37,6 @@ int dequeue(queue *q){
     q -> front = q -> front -> link;
     q -> count --;
     free(temp);
-    return n;
 }
 
-void display(node *head){
-    node *temp;
-    temp = head;
 
-    if(head == NULL){
-        return;
-    } else {
-        while(temp != NULL){
-            temp = temp -> link;
-        }
-    }
-}

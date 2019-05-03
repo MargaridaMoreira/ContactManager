@@ -8,7 +8,7 @@
 typedef struct {
     char nome[MAX_NOME];
     char email[MAX_EMAIL];
-    char numero[MAX_NUMERO];
+    char telefone[MAX_NUMERO];
 } contacto;
 
 struct node{
