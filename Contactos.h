@@ -1,5 +1,5 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef CONTACTOS_H
+#define CONTACTOS_H
 
 #define MAX_NOME 1024          /*Numero maximo de caracteres no nome*/
 #define MAX_EMAIL 512          /*Numero maximo de caracteres no email*/   
@@ -10,11 +10,5 @@ typedef struct {
     char email[MAX_EMAIL];
     char telefone[MAX_NUMERO];
 } contacto;
-
-struct node{
-    contacto data;
-    struct node *link;
-};
-typedef struct node node;
 
 #endif

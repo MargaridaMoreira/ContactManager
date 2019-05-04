@@ -1,5 +1,4 @@
 #include "Queue.h"
-#include "Contactos.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,13 +29,28 @@ void enqueue(queue *q, contacto value){
 }
 
 void dequeue(queue *q){
-    int n = q -> front -> data;
+    contacto n = q -> front -> data;
     node *temp;
 
     temp = q -> front;
     q -> front = q -> front -> link;
     q -> count --;
     free(temp);
+}
+
+void display(node *head){
+    node *temp;
+    temp = head;
+
+    if(head == NULL){
+        printf("The Queue is empty\n");
+    } else {
+        while(temp != NULL){
+            printf("%s\n%s\n%s\n", temp -> data.nome, temp ->data.email, temp -> data.telefone);
+            temp = temp -> link;
+        }
+        printf("\n");
+    }
 }
 
 
