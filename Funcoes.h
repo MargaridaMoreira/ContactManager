@@ -1,12 +1,11 @@
 #include "Contactos.h"
 #include "Queue.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#ifndef FUNCOES_H
+#define FUNCOES_H
 
 void adiciona(queue *q);
+void lista_eventos(queue *q);
 
 #endif

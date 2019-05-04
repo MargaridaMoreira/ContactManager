@@ -6,9 +6,9 @@
 #define MAX_NUMERO 64          /*Numero maximo de caracters no numero*/
 
 typedef struct {
-    char nome[MAX_NOME];
-    char email[MAX_EMAIL];
-    char telefone[MAX_NUMERO];
+    char *nome;
+    char *email;
+    char *telefone;
 } contacto;
 
 #endif

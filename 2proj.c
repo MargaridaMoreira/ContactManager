@@ -1,8 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "Queue.h"
 #include "Contactos.h"
-#include "Functions.h"
+#include "Funcoes.h"
 
 int main(){
     char opcao;
@@ -11,23 +9,23 @@ int main(){
     initialize(contactos);
     opcao = getchar();
 
-   /* if (opcao == 'a'){
-        getchar();
-        adiciona(contactos);
-    }*/
     while(opcao != 'x'){
         switch(opcao){
             case 'a':
                 getchar();
                 adiciona(contactos);
                 break;
+            case 'l':
+                getchar();
+                lista_eventos(contactos);
             default:
                 break;
         }
         opcao = getchar();
     }
-    display(contactos -> front);
-    dequeue(contactos);
+    while(contactos -> count != 0){
+        dequeue(contactos);
+    }
     free(contactos);
     return 0;
 }

@@ -1,8 +1,5 @@
 #include "Queue.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
 void initialize(queue *q){
     q -> count = 0;
     q -> front = NULL;
@@ -17,10 +14,10 @@ void enqueue(queue *q, contacto value){
     node *temp;
     temp = malloc(sizeof(node));
     temp -> data = value;
-    temp -> link = NULL;
+    temp -> next = NULL;
 
     if(!isEmpty(q)){
-        q -> rear -> link = temp;
+        q -> rear -> next = temp;
         q -> rear = temp;
     } else {
         q -> front = q -> rear = temp;
@@ -33,23 +30,20 @@ void dequeue(queue *q){
     node *temp;
 
     temp = q -> front;
-    q -> front = q -> front -> link;
+    q -> front = q -> front -> next;
     q -> count --;
+    free(temp -> data.nome);
+    free(temp -> data.email);
+    free(temp -> data.telefone);
     free(temp);
 }
 
 void display(node *head){
     node *temp;
     temp = head;
-
-    if(head == NULL){
-        printf("The Queue is empty\n");
-    } else {
-        while(temp != NULL){
-            printf("%s\n%s\n%s\n", temp -> data.nome, temp ->data.email, temp -> data.telefone);
-            temp = temp -> link;
-        }
-        printf("\n");
+    while(temp != NULL){
+        printf("%s %s %s\n", temp -> data.nome, temp -> data.email, temp -> data.telefone); 
+        temp = temp -> next;
     }
 }
 

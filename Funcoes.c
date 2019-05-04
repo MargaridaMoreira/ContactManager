@@ -1,4 +1,4 @@
-#include "Functions.h"
+#include "Funcoes.h"
 
 #define MAX_INPUT 1610
 
@@ -21,12 +21,19 @@ void adiciona(queue *q){
         token = strtok(NULL, " "); 
         i ++;
     }
-    
+        
+    a.nome = malloc((strlen(info[0])+1) * sizeof(char));
+    a.email = malloc((strlen(info[1])+1) * sizeof(char));
+    a.telefone = malloc((strlen(info[2])+1) * sizeof(char));
+
     strcpy(a.nome, info[0]);
     strcpy(a.email, info[1]);
     strcpy(a.telefone, info[2]);
 
     enqueue(q, a);
+}
 
+void lista_eventos(queue *q){
+    display(q -> front);
 }
 
