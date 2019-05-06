@@ -16,3 +16,8 @@ int key(char nome[]){
         return (i-69);
     }
 }
+
+void removeContacto(hash hashArray[SIZE], char nome[]){
+    int element = key(nome);
+    hash h = hashArray[element];
+}

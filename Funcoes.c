@@ -33,7 +33,7 @@ void adiciona(queue *q){
     enqueue(q, a);
 }
 
-void lista_eventos(queue *q){
+void lista_contactos(queue *q){
     display(q -> front);
 }
 

@@ -17,25 +17,47 @@ void enqueue(queue *q, contacto value){
     temp -> next = NULL;
 
     if(!isEmpty(q)){
+        temp -> prev = q -> rear;   
         q -> rear -> next = temp;
         q -> rear = temp;
+
     } else {
         q -> front = q -> rear = temp;
+        temp -> prev = NULL;
     }
     q -> count++;
 }
 
 void dequeue(queue *q){
-    contacto n = q -> front -> data;
     node *temp;
 
     temp = q -> front;
     q -> front = q -> front -> next;
     q -> count --;
-    free(temp -> data.nome);
-    free(temp -> data.email);
-    free(temp -> data.telefone);
+    freeContacto(temp -> data);
     free(temp);
+}
+
+void dequeueElement(queue *q, node *value){
+    node *temp;
+    temp = q -> front;
+
+    if(temp == value){
+        //dequeue(q);
+        temp = value -> next;
+    }
+
+    if (value -> next != NULL){
+        value -> next  -> prev = value -> prev;
+    }
+
+    if(value -> prev != NULL){
+        value -> prev -> next = value -> next;
+    }
+    freeContacto(value -> data);
+    free(value);
+    q->count --;
+
 }
 
 void display(node *head){

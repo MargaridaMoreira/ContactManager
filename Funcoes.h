@@ -6,6 +6,6 @@
 #define FUNCOES_H
 
 void adiciona(queue *q);
-void lista_eventos(queue *q);
+void lista_contactos(queue *q);
 
 #endif

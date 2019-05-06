@@ -7,9 +7,10 @@ int main(){
     queue *contactos;
     contactos = malloc(sizeof(queue));
     initialize(contactos);
+    contacto c;
 
     //hash *table;
-    //table = malloc(sizeof(hash));
+    //for cycle table = malloc(sizeof(hash));
     //initHash(table);
 
     char opcao;
@@ -23,12 +24,13 @@ int main(){
                 break;
             case 'l':
                 getchar();
-                lista_eventos(contactos);
+                lista_contactos(contactos);
             default:
                 break;
         }
         opcao = getchar();
     }
+    
     while(contactos -> count != 0){
         dequeue(contactos);
     }

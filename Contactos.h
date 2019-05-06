@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #ifndef CONTACTOS_H
 #define CONTACTOS_H
 
@@ -10,5 +12,8 @@ typedef struct {
     char *email;
     char *telefone;
 } contacto;
+
+int equalContacto(contacto a, contacto b);
+void freeContacto(contacto a);
 
 #endif
