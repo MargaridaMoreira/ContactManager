@@ -100,6 +100,26 @@ void altera_email(hash *hashTable[SIZE]){
     }
 }
 
-/*void apaga_contacto(hash *hashTable[SIZE]){
+void apaga_contacto(hash *hashTable[SIZE], queue *q){
+    char input[MAX_NOME];
+    int c, i;
+    node *n;
 
-}*/
+    c = getchar();
+    for(i = 0; i < MAX_INPUT-1 && c != '\n'; i++){
+        input[i] = c;
+        c = getchar();
+    }
+    input[i] = '\0';
+
+    n = findName(hashTable, SIZE, input);
+
+    if(n == NULL){
+        printf("Nome inexistente.\n");
+    } else {
+        dequeueHashElement(hashTable, SIZE, input);
+        dequeueElement(q, n);
+
+    }
+
+}
