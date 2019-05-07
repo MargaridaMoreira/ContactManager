@@ -28,6 +28,18 @@ int main(){
             case 'l':
                 getchar();
                 lista_contactos(contactos);
+                break;
+            case 'p':
+                getchar();
+                procura_contactos(hashTable);
+                break;
+            /*case 'r':
+                getchar();
+                apaga_contacto(hashTable);*/
+            case 'e':
+                getchar();
+                altera_email(hashTable);
+                break;
             default:
                 break;
         }

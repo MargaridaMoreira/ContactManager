@@ -20,7 +20,7 @@ typedef struct hash hash;
 void initHash(hash *h);
 unsigned long djb2(char *str);
 int empty(hash *h);
-int searchName(hash *hashTable[SIZE], unsigned long m, char *nome);
+node *findName(hash *hashTable[SIZE], unsigned long m, char *nome);
 void add(hash *hashTable[SIZE], unsigned long m, char *nome, node *node_q);
 void dequeueHash(hash *h);
 

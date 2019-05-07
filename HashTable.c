@@ -18,14 +18,14 @@ int empty(hash *h){
     return (h -> front == NULL);
 }
 
-int searchName(hash *hashTable[SIZE], unsigned long m, char *nome){
+
+node *findName(hash *hashTable[SIZE], unsigned long m, char *nome){
     unsigned long key = djb2(nome) % m;
     hash *h = hashTable[key];
     node_t *temp;
 
     if(h -> front == NULL){
-        return 0;
-
+        return NULL;
     }
     
     temp = h -> front;
@@ -34,9 +34,9 @@ int searchName(hash *hashTable[SIZE], unsigned long m, char *nome){
     }
 
     if(temp == NULL){
-        return 0;
+        return NULL;
     } else {    
-        return 1;
+        return temp -> node_h;
     }
 }
 
