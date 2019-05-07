@@ -4,23 +4,26 @@
 #include "HashTable.h"
 
 int main(){
+    int i;
+    char opcao;
+    
     queue *contactos;
+    hash *hashTable[SIZE];
+
     contactos = malloc(sizeof(queue));
     initialize(contactos);
-    contacto c;
-
-    //hash *table;
-    //for cycle table = malloc(sizeof(hash));
-    //initHash(table);
-
-    char opcao;
+    for(i = 0; i < SIZE; i ++){
+        hashTable[i] = malloc(sizeof(hash));
+        initHash(hashTable[i]);
+    }
+    
     opcao = getchar();
 
     while(opcao != 'x'){
         switch(opcao){
             case 'a':
                 getchar();
-                adiciona(contactos);
+                adiciona(contactos, hashTable);
                 break;
             case 'l':
                 getchar();
@@ -35,6 +38,11 @@ int main(){
         dequeue(contactos);
     }
     free(contactos);
-    //free(table);
+    for(i = 0; i < SIZE; i ++){
+        dequeueHash(hashTable[i]);
+        free(hashTable[i]);
+    }
+
+
     return 0;
 }

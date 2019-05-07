@@ -1,7 +1,5 @@
 #include "Contactos.h"
-
 #include <stdio.h>
-#include <stdlib.h>
 
 #ifndef QUEUE_H
 #define QUEUE_H
@@ -22,7 +20,7 @@ typedef struct queue queue;
 
 void initialize (queue *q);
 int isEmpty(queue *q);
-void enqueue(queue *q, contacto value);
+node *enqueue(queue *q, contacto value);
 void dequeue(queue *q);
 void dequeueElement(queue *q, node *value);
 void display(node *head);

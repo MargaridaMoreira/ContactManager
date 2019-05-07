@@ -2,10 +2,11 @@
 
 #define MAX_INPUT 1610
 
-void adiciona(queue *q){
+void adiciona(queue *q, hash *hashTable[SIZE]){
     char input[MAX_INPUT], *token, *info[3] ;   
     int c, i = 0;
     contacto a;
+    node *n;
 
     c = getchar();
     for(i = 0; i < MAX_INPUT-1 && c != '\n'; i++){
@@ -30,7 +31,16 @@ void adiciona(queue *q){
     strcpy(a.email, info[1]);
     strcpy(a.telefone, info[2]);
 
-    enqueue(q, a);
+    if(!searchName(hashTable, SIZE, a.nome)){
+        n = enqueue(q,a);
+        add(hashTable, SIZE, a.nome, n);
+    } else {
+        free(a.nome);
+        free(a.email);
+        free(a.telefone);
+        printf("Nome existente.\n");
+    }
+
 }
 
 void lista_contactos(queue *q){

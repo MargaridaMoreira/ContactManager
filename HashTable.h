@@ -1,15 +1,13 @@
 #include "Contactos.h"
 #include "Queue.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
 
-#define SIZE 10
+#define SIZE 1023
 
 struct node_t{
-    node *n;
+    node *node_h;
     struct node_t *next_t;
 };
 typedef struct node_t node_t;
@@ -19,12 +17,12 @@ struct hash{
 };
 typedef struct hash hash;
 
-hash hashArray[SIZE];
-
 void initHash(hash *h);
-int key(char nome[]);
-//void addContacto(hash hashArray[SIZE], contacto value);
-void removeContacto(hash hashArray[SIZE], char nome[]);
+unsigned long djb2(char *str);
+int empty(hash *h);
+int searchName(hash *hashTable[SIZE], unsigned long m, char *nome);
+void add(hash *hashTable[SIZE], unsigned long m, char *nome, node *node_q);
+void dequeueHash(hash *h);
 
 #endif
 

@@ -10,7 +10,7 @@ int isEmpty(queue *q){
     return (q -> rear == NULL);
 }
 
-void enqueue(queue *q, contacto value){
+node* enqueue(queue *q, contacto value){
     node *temp;
     temp = malloc(sizeof(node));
     temp -> data = value;
@@ -26,6 +26,7 @@ void enqueue(queue *q, contacto value){
         temp -> prev = NULL;
     }
     q -> count++;
+    return (temp);
 }
 
 void dequeue(queue *q){
@@ -43,7 +44,6 @@ void dequeueElement(queue *q, node *value){
     temp = q -> front;
 
     if(temp == value){
-        //dequeue(q);
         temp = value -> next;
     }
 
@@ -54,6 +54,7 @@ void dequeueElement(queue *q, node *value){
     if(value -> prev != NULL){
         value -> prev -> next = value -> next;
     }
+
     freeContacto(value -> data);
     free(value);
     q->count --;
