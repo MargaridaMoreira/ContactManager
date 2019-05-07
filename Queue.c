@@ -39,28 +39,25 @@ void dequeue(queue *q){
     free(temp);
 }
 
-void dequeueElement(queue *q, node *value){ 
+void dequeueElement(queue *q, node *value){
     node *temp;
     temp = q -> front;
 
     if(temp == value){
-        q -> front = value -> next;
+        temp = value -> next;
     }
 
     if (value -> next != NULL){
         value -> next  -> prev = value -> prev;
-    } else {
-        q -> rear = value -> prev;
     }
 
     if(value -> prev != NULL){
         value -> prev -> next = value -> next;
     }
 
-
     freeContacto(value -> data);
     free(value);
-    q -> count --;
+    q->count --;
 
 }
 

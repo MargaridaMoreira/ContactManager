@@ -33,10 +33,9 @@ int main(){
                 getchar();
                 procura_contactos(hashTable);
                 break;
-            case 'r':
+            /*case 'r':
                 getchar();
-                apaga_contacto(hashTable, contactos);
-                break;
+                apaga_contacto(hashTable);*/
             case 'e':
                 getchar();
                 altera_email(hashTable);

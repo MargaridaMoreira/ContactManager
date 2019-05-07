@@ -40,6 +40,8 @@ node *findName(hash *hashTable[SIZE], unsigned long m, char *nome){
     }
 }
 
+
+
 void add(hash *hashTable[SIZE], unsigned long m, char *nome, node *node_q){
     node_t *temp = malloc (sizeof(node_t));
     unsigned long key = djb2(nome) % m;
@@ -67,31 +69,5 @@ void dequeueHash(hash *h){
         free(temp);
     }
     
-}
-
-void dequeueHashElement(hash *hashTable[SIZE], unsigned long m, char *nome){
-    unsigned long key = djb2(nome) % m;
-    hash *h = hashTable[key];
-    node_t *head = h -> front;
-    node_t *prev, *temp = head;
-
-
-    if (temp != NULL && !strcmp(temp -> node_h -> data.nome, nome)){
-        h -> front = temp -> next_t;
-        free(temp);
-        return;
-    }
-
-    while(temp != NULL && !strcmp(temp -> node_h -> data.nome, nome)){
-        prev = temp;
-        temp = temp -> next_t;
-    }
-
-    if (temp == NULL){
-        return;
-    }
-
-    prev -> next_t = temp -> next_t;
-    free(temp);
 }
 

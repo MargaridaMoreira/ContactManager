@@ -23,7 +23,6 @@ int empty(hash *h);
 node *findName(hash *hashTable[SIZE], unsigned long m, char *nome);
 void add(hash *hashTable[SIZE], unsigned long m, char *nome, node *node_q);
 void dequeueHash(hash *h);
-void dequeueHashElement(hash *hashTable[SIZE], unsigned long m, char *nome);
 
 #endif
 
