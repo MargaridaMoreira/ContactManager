@@ -68,7 +68,7 @@ void display(node *head){
     node *temp;
     temp = head;
     while(temp != NULL){
-        printf("%s %s %s\n", temp -> data.nome, temp -> data.email, temp -> data.telefone); 
+        printf("%s %s@%s %s\n", temp -> data.nome, temp -> data.local,temp -> data.dominio, temp -> data.telefone); 
         temp = temp -> next;
     }
 }

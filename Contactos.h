@@ -10,7 +10,9 @@
 
 typedef struct {
     char *nome;
-    char *email;
+    char *local;
+    char *dominio;
+    /*char *email;*/
     char *telefone;
 } contacto;
 

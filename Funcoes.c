@@ -3,7 +3,8 @@
 #define MAX_INPUT 1600
 
 void adiciona(queue *q, hash *hashTable[SIZE]){
-    char input[MAX_INPUT], *token, *info[3];   
+    char input[MAX_INPUT], *token, *info[3], *email[2];
+       
     int c, i = 0;
     contacto a;
     node *n, *contacto;
@@ -22,13 +23,25 @@ void adiciona(queue *q, hash *hashTable[SIZE]){
         token = strtok(NULL, " "); 
         i ++;
     }
+
+    i = 0; 
+    token = strtok(info[1], "@");
+    while(token != NULL){
+        email[i] = token;
+        token = strtok(NULL, "@");
+        i ++;
+    }
+
+    
         
     a.nome = malloc((strlen(info[0])+1) * sizeof(char));
-    a.email = malloc((strlen(info[1])+1) * sizeof(char));
+    a.local = malloc((strlen(email[0])+1)*sizeof(char));
+    a.dominio = malloc((strlen(email[1])+1) * sizeof(char));
     a.telefone = malloc((strlen(info[2])+1) * sizeof(char));
 
     strcpy(a.nome, info[0]);
-    strcpy(a.email, info[1]);
+    strcpy(a.local, email[0]);
+    strcpy(a.dominio, email[1]);
     strcpy(a.telefone, info[2]);
 
     n = findName(hashTable, SIZE, input);
@@ -38,7 +51,8 @@ void adiciona(queue *q, hash *hashTable[SIZE]){
         add(hashTable, SIZE, a.nome, contacto);
     } else {
         free(a.nome);
-        free(a.email);
+        free(a.local);
+        free(a.dominio);
         free(a.telefone);
         printf("Nome existente.\n");
     }
@@ -61,17 +75,18 @@ void procura_contactos(hash *hashTable[SIZE]){
     }
     input[i] = '\0';
 
+
     n = findName(hashTable, SIZE, input);
 
     if(n == NULL){
         printf("Nome inexistente.\n");
     } else {
-        printf("%s %s %s\n", n -> data.nome, n -> data.email, n -> data.telefone);
+        printf("%s %s@%s %s\n", n -> data.nome, n -> data.local, n -> data.dominio, n -> data.telefone);
     }
 }
 
 void altera_email(hash *hashTable[SIZE]){
-    char input[MAX_INPUT], *token, *info[2];   
+    char input[MAX_INPUT], *token, *info[2], *email[2];   
     int c, i = 0;
     node *n;
 
@@ -90,13 +105,23 @@ void altera_email(hash *hashTable[SIZE]){
         i ++;
     }
 
+    i = 0; 
+    token = strtok(info[1], "@");
+    while(token != NULL){
+        email[i] = token;
+        token = strtok(NULL, "@");
+        i ++;
+    }
+
     n = findName(hashTable, SIZE, info[0]);
 
     if(n == NULL){
         printf("Nome inexistente.\n");
     } else {
-        n -> data.email = realloc(n -> data.email, (strlen(info[1])+1)*sizeof(char));
-        strcpy(n -> data.email, info[1]); 
+        n -> data.local = realloc(n -> data.local, (strlen(email[0])+1)*sizeof(char));
+        n -> data.dominio = realloc(n -> data.dominio, (strlen(email[1])+1)*sizeof(char));
+        strcpy(n -> data.local, email[0]); 
+        strcpy(n -> data.dominio, email[1]); 
     }
 }
 
