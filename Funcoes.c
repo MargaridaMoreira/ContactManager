@@ -49,6 +49,7 @@ void adiciona(queue *q, hash *hashTable[SIZE]){
     if(n == NULL){
         contacto = enqueue(q,a);
         add(hashTable, SIZE, a.nome, contacto);
+        /*addDomain(hashTableDomain, SIZE, a.dominio, contacto);*/
     } else {
         free(a.nome);
         free(a.local);

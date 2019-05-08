@@ -21,6 +21,7 @@ int empty(hash *h){
 
 node *findName(hash *hashTable[SIZE], unsigned long m, char *nome){
     unsigned long key = djb2(nome) % m;
+    
     hash *h = hashTable[key];
     node_t *temp;
 
@@ -40,6 +41,28 @@ node *findName(hash *hashTable[SIZE], unsigned long m, char *nome){
     }
 }
 
+/*int findDomain(hash *hashTable[SIZE], unsigned long m, char *dominio){
+    unsigned long key = djb2(dominio) % m;
+    int count = 0;
+    
+    hash *h = hashTable[key];
+    node_t *temp;
+
+    if(h -> front == NULL){
+        return count;
+    }
+
+    temp = h -> front;
+    while(temp != NULL){
+        if(!strcmp(temp -> node_h -> data.dominio, dominio)){
+            count ++;
+        }
+        temp = temp -> next_t;
+    }
+    return count;
+
+}*/
+
 void add(hash *hashTable[SIZE], unsigned long m, char *nome, node *node_q){
     node_t *temp = malloc (sizeof(node_t));
     unsigned long key = djb2(nome) % m;
@@ -57,6 +80,24 @@ void add(hash *hashTable[SIZE], unsigned long m, char *nome, node *node_q){
         h -> front =  temp;
     }
 }
+
+/*void addDomain(hash *hashTable[SIZE], unsigned long m, char *dominio, node *node_q){
+    node_t *temp = malloc (sizeof(node_t));
+    unsigned long key = djb2(dominio) % m;
+   
+    hash *h = hashTable[key];
+
+    temp -> node_h = node_q;
+    temp -> next_t = NULL;
+
+    if(!empty(h)){ 
+        temp -> next_t = h -> front;
+        h -> front = temp;
+
+    } else {
+        h -> front =  temp;
+    }
+}*/
 
 void dequeueHash(hash *h){
     node_t *temp;
@@ -82,7 +123,7 @@ void dequeueHashElement(hash *hashTable[SIZE], unsigned long m, char *nome){
         return;
     }
 
-    while(temp != NULL && !strcmp(temp -> node_h -> data.nome, nome)){
+    while(temp != NULL && strcmp(temp -> node_h -> data.nome, nome)){
         prev = temp;
         temp = temp -> next_t;
     }
@@ -94,4 +135,6 @@ void dequeueHashElement(hash *hashTable[SIZE], unsigned long m, char *nome){
     prev -> next_t = temp -> next_t;
     free(temp);
 }
+
+
 

@@ -9,12 +9,15 @@ int main(){
     
     queue *contactos;
     hash *hashTable[SIZE];
+    hash *hashTableDomain[SIZE];
 
     contactos = malloc(sizeof(queue));
     initialize(contactos);
     for(i = 0; i < SIZE; i ++){
         hashTable[i] = malloc(sizeof(hash));
+        hashTableDomain[i] = malloc(sizeof(hash));
         initHash(hashTable[i]);
+        initHash(hashTableDomain[i]);
     }
     
     opcao = getchar();
@@ -53,7 +56,9 @@ int main(){
     free(contactos);
     for(i = 0; i < SIZE; i ++){
         dequeueHash(hashTable[i]);
+        dequeueHash(hashTableDomain[i]);
         free(hashTable[i]);
+        free(hashTableDomain[i]);
     }
 
 
