@@ -144,7 +144,7 @@ void apaga_contacto(hash *hashTable[SIZE],hash *hashTableDomain[SIZE], queue *q)
         printf("Nome inexistente.\n");
     } else {
         dequeueHashElement(hashTable, SIZE, input);
-        dequeueHashDomain(hashTableDomain, SIZE, n->data.dominio);
+        dequeueHashDomain(hashTableDomain, SIZE, n->data.dominio, input);
         dequeueElement(q, n);
 
     }

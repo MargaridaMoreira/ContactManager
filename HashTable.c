@@ -136,20 +136,20 @@ void dequeueHashElement(hash *hashTable[SIZE], unsigned long m, char *nome){
     free(temp);
 }
 
-void dequeueHashDomain(hash *hashTable[SIZE], unsigned long m, char *dominio){
+void dequeueHashDomain(hash *hashTable[SIZE], unsigned long m, char *dominio, char *nome){
     unsigned long key = djb2(dominio) % m;
     hash *h = hashTable[key];
     node_t *head = h -> front;
     node_t *prev, *temp = head;
 
 
-    if (temp != NULL && !strcmp(temp -> node_h -> data.dominio, dominio)){
+    if (temp != NULL && !strcmp(temp -> node_h -> data.dominio, dominio) && !strcmp(temp -> node_h -> data.nome, nome)){
         h -> front = temp -> next_t;
         free(temp);
         return;
     }
 
-    while(temp != NULL && strcmp(temp -> node_h -> data.dominio, dominio)){
+    while(temp != NULL && strcmp(temp -> node_h -> data.dominio, dominio) && strcmp(temp -> node_h -> data.nome, nome)){
         prev = temp;
         temp = temp -> next_t;
     }
