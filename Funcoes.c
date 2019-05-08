@@ -2,7 +2,7 @@
 
 #define MAX_INPUT 1600
 
-void adiciona(queue *q, hash *hashTable[SIZE]){
+void adiciona(queue *q, hash *hashTable[SIZE], hash *hashTableDomain[SIZE]){
     char input[MAX_INPUT], *token, *info[3], *email[2];
        
     int c, i = 0;
@@ -49,7 +49,7 @@ void adiciona(queue *q, hash *hashTable[SIZE]){
     if(n == NULL){
         contacto = enqueue(q,a);
         add(hashTable, SIZE, a.nome, contacto);
-        /*addDomain(hashTableDomain, SIZE, a.dominio, contacto);*/
+        addDomain(hashTableDomain, SIZE, a.dominio, contacto);
     } else {
         free(a.nome);
         free(a.local);
@@ -126,7 +126,7 @@ void altera_email(hash *hashTable[SIZE]){
     }
 }
 
-void apaga_contacto(hash *hashTable[SIZE], queue *q){
+void apaga_contacto(hash *hashTable[SIZE],hash *hashTableDomain[SIZE], queue *q){
     char input[MAX_NOME];
     int c, i;
     node *n;
@@ -144,8 +144,24 @@ void apaga_contacto(hash *hashTable[SIZE], queue *q){
         printf("Nome inexistente.\n");
     } else {
         dequeueHashElement(hashTable, SIZE, input);
+        dequeueHashDomain(hashTableDomain, SIZE, n->data.dominio);
         dequeueElement(q, n);
 
     }
+}
+
+void conta_dominios(hash *hashTableDomain[SIZE]){
+    char input[MAX_INPUT];   
+    int c, i = 0, num;
+
+    c = getchar();
+    for(i = 0; i < MAX_INPUT-1 && c != '\n'; i++){
+        input[i] = c;
+        c = getchar();
+    }
+    input[i] = '\0';
+
+    num = findDomain(hashTableDomain, SIZE, input);
+    printf("%d\n", num);
 
 }

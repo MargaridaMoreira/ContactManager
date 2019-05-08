@@ -26,7 +26,7 @@ int main(){
         switch(opcao){
             case 'a':
                 getchar();
-                adiciona(contactos, hashTable);
+                adiciona(contactos, hashTable, hashTableDomain);
                 break;
             case 'l':
                 getchar();
@@ -38,12 +38,15 @@ int main(){
                 break;
             case 'r':
                 getchar();
-                apaga_contacto(hashTable, contactos);
+                apaga_contacto(hashTable,hashTableDomain, contactos);
                 break;
             case 'e':
                 getchar();
                 altera_email(hashTable);
                 break;
+            case 'c':
+                getchar();
+                conta_dominios(hashTableDomain);
             default:
                 break;
         }
