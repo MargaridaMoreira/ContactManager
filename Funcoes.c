@@ -86,7 +86,7 @@ void procura_contactos(hash *hashTable[SIZE]){
     }
 }
 
-void altera_email(hash *hashTable[SIZE]){
+void altera_email(hash *hashTable[SIZE], hash *hashTableDomain[SIZE]){
     char input[MAX_INPUT], *token, *info[2], *email[2];   
     int c, i = 0;
     node *n;
@@ -119,10 +119,12 @@ void altera_email(hash *hashTable[SIZE]){
     if(n == NULL){
         printf("Nome inexistente.\n");
     } else {
+        dequeueHashDomain(hashTableDomain, SIZE, n -> data.dominio, n -> data.nome);
         n -> data.local = realloc(n -> data.local, (strlen(email[0])+1)*sizeof(char));
         n -> data.dominio = realloc(n -> data.dominio, (strlen(email[1])+1)*sizeof(char));
         strcpy(n -> data.local, email[0]); 
         strcpy(n -> data.dominio, email[1]); 
+        addDomain(hashTableDomain, SIZE, n -> data.dominio, n);
     }
 }
 
@@ -162,6 +164,6 @@ void conta_dominios(hash *hashTableDomain[SIZE]){
     input[i] = '\0';
 
     num = findDomain(hashTableDomain, SIZE, input);
-    printf("%d\n", num);
+    printf("%s:%d\n", input, num);
 
 }

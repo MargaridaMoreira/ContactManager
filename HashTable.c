@@ -149,7 +149,10 @@ void dequeueHashDomain(hash *hashTable[SIZE], unsigned long m, char *dominio, ch
         return;
     }
 
-    while(temp != NULL && strcmp(temp -> node_h -> data.dominio, dominio) && strcmp(temp -> node_h -> data.nome, nome)){
+    while(temp != NULL ){
+        if(!strcmp(temp -> node_h -> data.dominio, dominio) && !strcmp(temp -> node_h -> data.nome, nome)){
+            break;
+        }
         prev = temp;
         temp = temp -> next_t;
     }

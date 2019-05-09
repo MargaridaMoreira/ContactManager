@@ -23,7 +23,7 @@ int empty(hash *h);
 node *findName(hash *hashTable[SIZE], unsigned long m, char *nome);
 int findDomain(hash *hashTable[SIZE], unsigned long m, char *dominio);
 void add(hash *hashTable[SIZE], unsigned long m, char *nome, node *node_q);
-void addDomain(hash *hashTable[SIZE], unsigned long m, char *nome, node *node_q);
+void addDomain(hash *hashTable[SIZE], unsigned long m, char *dominio, node *node_q);
 void dequeueHash(hash *h);
 void dequeueHashElement(hash *hashTable[SIZE], unsigned long m, char *nome);
 void dequeueHashDomain(hash *hashTable[SIZE], unsigned long m, char *dominio, char *nome);

@@ -42,7 +42,7 @@ int main(){
                 break;
             case 'e':
                 getchar();
-                altera_email(hashTable);
+                altera_email(hashTable, hashTableDomain);
                 break;
             case 'c':
                 getchar();
