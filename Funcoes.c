@@ -1,3 +1,9 @@
+/**
+ * Nome: Margarida Moreira
+ * Numero: 93881
+ * Ficheiro: Funcoes.c
+*/
+
 #include "Funcoes.h"
 
 #define MAX_INPUT 1600
@@ -51,10 +57,7 @@ void adiciona(queue *q, hash *hashTable[SIZE], hash *hashTableDomain[SIZE]){
         add(hashTable, SIZE, a.nome, contacto);
         addDomain(hashTableDomain, SIZE, a.dominio, contacto);
     } else {
-        free(a.nome);
-        free(a.local);
-        free(a.dominio);
-        free(a.telefone);
+        freeContacto(a);
         printf("Nome existente.\n");
     }
 

@@ -1,3 +1,9 @@
+/**
+ * Nome: Margarida Moreira
+ * Numero: 93881
+ * Ficheiro: Queue.c
+*/
+
 #include "Queue.h"
 
 void initialize(queue *q){

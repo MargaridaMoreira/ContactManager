@@ -1,3 +1,9 @@
+/**
+ * Nome: Margarida Moreira
+ * Numero: 93881
+ * Ficheiro: HashTable.c
+*/
+
 #include "HashTable.h"
 
 void initHash(hash *h){

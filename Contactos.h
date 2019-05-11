@@ -1,3 +1,9 @@
+/**
+ * Nome: Margarida Moreira
+ * Numero: 93881
+ * Ficheiro: Contactos.h
+*/
+
 #include <stdlib.h>
 #include <string.h>
 
@@ -12,11 +18,12 @@ typedef struct {
     char *nome;
     char *local;
     char *dominio;
-    /*char *email;*/
     char *telefone;
 } contacto;
 
+/*Verifica se dois contactos sao iguais*/
 int equalContacto(contacto a, contacto b);
+/*Liberta o espaco alocado para o nome, local, dominio e telefone do contacto*/
 void freeContacto(contacto a);
 
 #endif

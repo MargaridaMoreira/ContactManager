@@ -1,3 +1,9 @@
+/**
+ * Nome: Margarida Moreira
+ * Numero: 93881
+ * Ficheiro: Contactos.c
+*/
+
 #include "Contactos.h"
 
 int equalContacto(contacto a, contacto b){

@@ -1,3 +1,9 @@
+/**
+ * Nome: Margarida Moreira
+ * Numero: 93881
+ * Ficheiro: 2proj.c
+*/
+
 #include "Queue.h"
 #include "Contactos.h"
 #include "Funcoes.h"
